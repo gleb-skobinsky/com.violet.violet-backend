@@ -1,12 +1,7 @@
-
-val ktor_version: String by project
-val kotlin_version: String by project
-val logback_version: String by project
-
 plugins {
-    kotlin("jvm") version "1.9.24"
-    id("io.ktor.plugin") version "2.3.11"
-    id("org.jetbrains.kotlin.plugin.serialization") version "1.9.24"
+    alias(libs.plugins.kotlin.jvm)
+    alias(libs.plugins.ktor.plugin)
+    alias(libs.plugins.serialization)
 }
 
 group = "com.violet"
@@ -24,25 +19,24 @@ repositories {
 }
 
 dependencies {
-    implementation("io.ktor:ktor-server-core-jvm")
-    implementation("io.ktor:ktor-server-host-common-jvm")
-    implementation("io.ktor:ktor-server-swagger-jvm")
-    implementation("io.ktor:ktor-server-websockets-jvm")
-    implementation("io.ktor:ktor-serialization-kotlinx-json-jvm")
-    implementation("io.ktor:ktor-server-content-negotiation-jvm")
-    implementation("org.postgresql:postgresql:42.5.1")
-    implementation("com.h2database:h2:2.1.214")
-    implementation("org.jetbrains.exposed:exposed-core:0.41.1")
-    implementation("org.jetbrains.exposed:exposed-jdbc:0.41.1")
-    implementation("com.h2database:h2:2.1.214")
-    implementation("io.ktor:ktor-server-call-logging-jvm")
-    implementation("io.ktor:ktor-server-auth-jvm")
-    implementation("io.ktor:ktor-client-core-jvm")
-    implementation("io.ktor:ktor-client-apache-jvm")
-    implementation("io.ktor:ktor-server-auth-jwt-jvm")
-    implementation("io.ktor:ktor-server-netty-jvm")
-    implementation("ch.qos.logback:logback-classic:$logback_version")
-    implementation("io.ktor:ktor-server-config-yaml:2.3.11")
-    testImplementation("io.ktor:ktor-server-tests-jvm")
-    testImplementation("org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version")
+    implementation(libs.ktor.server)
+    implementation(libs.ktor.server.host)
+    implementation(libs.ktor.server.swagger)
+    implementation(libs.ktor.server.websockets)
+    implementation(libs.ktor.serialization.json)
+    implementation(libs.ktor.server.neg)
+    implementation(libs.postgres)
+    implementation(libs.h2)
+    implementation(libs.exposed.core)
+    implementation(libs.exposed.jdbc)
+    implementation(libs.ktor.server.logging)
+    implementation(libs.ktor.server.auth)
+    implementation(libs.ktor.client.core)
+    implementation(libs.ktor.client.apache)
+    implementation(libs.ktor.server.auth.jwt)
+    implementation(libs.ktor.server.netty)
+    implementation(libs.logback)
+    implementation(libs.ktor.server.yaml.config)
+    testImplementation(libs.ktor.server.tests)
+    testImplementation(libs.kotlin.junit)
 }
